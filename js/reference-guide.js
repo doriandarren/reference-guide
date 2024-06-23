@@ -1,3 +1,9 @@
+/************************************************
+ * 
+ *  VARIABLES
+ * 
+ ************************************************/
+
 //creacion de variables
 export var variableVar;            // es la más antigua
 let variableLet;            // sustituye a la var
@@ -10,9 +16,7 @@ variableVar = 'Hola';
 variableLet = 'Mundo';
 const variableConstAsignada = 'Hello';
 
-//Vuejs
-// const variable = ref('');   // Declaracion 
-// variable.value = 30;        // Asignación
+
 
 
 // Creación de un arreglo o array
@@ -62,6 +66,14 @@ let objectoMesa = {
 console.log(objectoMesa);
 
 
+
+
+/************************************************
+ * 
+ *  FUNCIONES
+ * 
+ ************************************************/
+
 //crear metodo o funcion
 function nombreFuncion(nombre, apellido){ // argumentos
     //Aqui en código
@@ -73,6 +85,18 @@ const nombreFuncionFlecha = (nombre, apellido) => { // argumentos
     //Aqui en código
 }
 
+
+
+
+
+
+
+
+/************************************************
+ * 
+ *  CLASES
+ * 
+ ************************************************/
 
 
 //Crear clase
