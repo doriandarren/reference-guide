@@ -76,15 +76,24 @@ console.log(objectoMesa);
 
 //crear metodo o funcion
 function nombreFuncion(nombre, apellido){ // argumentos
-    //Aqui en código
+    //Aqui el código
 }
 
 
 //crear metodo flecha
 const nombreFuncionFlecha = (nombre, apellido) => { // argumentos
-    //Aqui en código
+    //Aqui el código
 }
 
+
+// crear función anónima
+const functionAnonima = function(){
+    //Aqui el código
+}
+
+llamada(function(){ });
+
+llamada(() => {  });
 
 
 
