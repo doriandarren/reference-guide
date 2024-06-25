@@ -112,10 +112,13 @@ llamada(() => {  });
 class NombreClase{
 
     //aqui las propiedades
-    nombre;
+    nombres;
+    apellido;
 
-    constructor(){
-
+    //Construye la clase a partir del "new"
+    constructor(nombre, apellido){
+        this.nombre = nombre;
+        this.apellido = apellido;
     }
 
     //aqui los metodos o fuciones de clase
@@ -125,6 +128,11 @@ class NombreClase{
     }
 
 }
+
+
+const claseNueva = new NombreClase('Juan', 'Paz');
+
+
 
 //Get y Set
 
