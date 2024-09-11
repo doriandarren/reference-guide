@@ -95,13 +95,8 @@ formulario.edad = 38;
 
 //<script setup>
     //...
-    
     const emit = defineEmits(['function-para-enviar'])
-    
     //...
-
-    emit('function-para-enviar')
-
 //</script>
 
 
@@ -110,7 +105,7 @@ formulario.edad = 38;
 
     //<button 
         //...
-        //@click.prevent="$emit('function-para-enviar')"
+        //@click="$emit('function-para-enviar')"
     //>
     //</button>
 
@@ -135,17 +130,5 @@ formulario.edad = 38;
         }
     })
     //...
-
-    //Para usar en el script
-    props.variableParaEnviar;
-
 //</script>
 
-
-<template>
-
-    <p>
-        {{ variableParaEnviar }}
-    </p>
-    
-</template>
