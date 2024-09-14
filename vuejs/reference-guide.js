@@ -4,6 +4,26 @@
  * 
  ************************************************/
 
+/**
+Notas: 
+
+Template: <template>...</template>
+
+ - Cuando este presente un '@' hace referencia a una funcion. Ex: @click.prevent="unaFuncion"
+ - Cuando este presente un ':' hace referencia a una variable. Ex: :src="unaVariable" / :unaVarible="unaVariable"
+ - Cuando se use el "v-model" hace referencia a los input. Ex: <input v-model="nombre" />
+ - Aquí NO SE UTILIZA el '.value' para las variables
+
+
+
+Script: <script></script>
+
+*/
+
+
+
+
+
 
 /** 
  * Para hacer una variable ref:  
