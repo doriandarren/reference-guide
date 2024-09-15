@@ -18,6 +18,18 @@ Template: <template>...</template>
 
 Script: <script></script>
 
+
+
+
+
+EMITS:
+
+- En el PADRE se escribe en camelCase. Ex: 1) Declaración de la función: const ocultarModal = () => { //Cuerpo de la función }. 2) En el componente: @ocultar-modal="ocultarModal". 
+
+- En el hijo se escribe la función con guion '-'. Ex: 1) Se recibe la función: const emit = defineEmits(['ocultar-modal']). 2) En la etiqueta: @click.prevent="$emit('ocultar-modal')"  
+
+
+
 */
 
 
