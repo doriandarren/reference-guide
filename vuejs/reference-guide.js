@@ -22,12 +22,34 @@ Script: <script></script>
 
 
 
-EMITS:
+EMITS (envio solamente funciones):
 
-- En el PADRE se escribe en camelCase. Ex: 1) Declaración de la función: const ocultarModal = () => { //Cuerpo de la función }. 2) En el componente: @ocultar-modal="ocultarModal". 
+- En el PADRE se escribe en camelCase y con el signo '@'. 
+    Ex: 
+    1) Declaración de la función: const ocultarModal = () => { //Cuerpo de la función }. 
+    2) En el componente: @ocultar-modal="ocultarModal". 
 
-- En el hijo se escribe la función con guion '-'. Ex: 1) Se recibe la función: const emit = defineEmits(['ocultar-modal']). 2) En la etiqueta: @click.prevent="$emit('ocultar-modal')"  
+- En el hijo se escribe la función con guion '-' y se reciben en el 'defineEmits()'. 
+    Ex: 
+    1) Se recibe la función: const emit = defineEmits(['ocultar-modal']). 
+    2) En la etiqueta: @click.prevent="$emit('ocultar-modal')"  
 
+
+
+
+PROPS (envio solamente variables):
+
+- En el PADRE se escribe igual que una variable y con signo ':'. Ex. :unaVariable="unaVariable".
+
+
+- En el HIJO se reciben con en el 'defineProps()'. 
+    Ex:
+    const props = defineProps({
+        unaVariable: {
+            type: Object,
+            required: true
+        }
+    }) 
 
 
 */
