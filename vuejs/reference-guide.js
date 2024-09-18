@@ -7,7 +7,9 @@
 /**
 Notas: 
 
-Template: <template>...</template>
+-----------------------------------------------------
+--------  Template: <template>...</template> --------
+-----------------------------------------------------
 
  - Cuando este presente un '@' hace referencia a una funcion. Ex: @click.prevent="unaFuncion"
  - Cuando este presente un ':' hace referencia a una variable. Ex: :src="unaVariable" / :unaVarible="unaVariable"
@@ -15,11 +17,9 @@ Template: <template>...</template>
  - Aquí NO SE UTILIZA el '.value' para las variables
 
 
-
-Script: <script></script>
-
-
-
+-----------------------------------------------------
+--------  Script: <script></script> -----------------
+-----------------------------------------------------  
 
 
 EMITS (envio solamente funciones):
@@ -50,6 +50,19 @@ PROPS (envio solamente variables):
             required: true
         }
     }) 
+
+
+
+
+
+-----------------------------------------------------
+--------  Style: (solamente el CSS) ----------------- 
+-----------------------------------------------------
+
+En la etiqueta <style></style> 
+    - Cuando No tiene ninguna propiedad el estilo (clases CSS) es para todo el proyecto, es decir, se aplica todos los componenetes.
+    - Cuando tiene la propiedad "scorped" <style scoped></style> se utiliza solamente en el componente.
+    - Cuando tiene la propiedad 'lang="scss"' <style lang="scss"></style> hace referencia a código SASS. 
 
 
 */
