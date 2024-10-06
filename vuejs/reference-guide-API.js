@@ -7,7 +7,8 @@
 
 /*
 
- - fetch es una llamada.
+
+ - fetch es una llamada y solo se usa para leer archivos y en especial consultar API's
  - En la llamada se envia la URL de la API a consultar
  
  - El primer ".then()" es una llamada y dentro se envia una "arrow function". Aqui se convierte la respuesta de string a JSON. Recibe un argunmento y retorna ese argumento en formato JSON
