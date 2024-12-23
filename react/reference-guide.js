@@ -21,6 +21,7 @@ const [variable, setVariable] = useState('Hola mundo');      // Se puede inicial
 
 
 
+
  
 // Igual 
 const { variable, otraVariable } = props;  -> props.variable; 
