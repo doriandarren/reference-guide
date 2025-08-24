@@ -1,14 +1,9 @@
-
-/************************************************
- * 
- *  VARIABLES
- * 
- ************************************************/
+# VARIABLES
 
 
-/* 
+## useSate:
 
-- useSate:
+```sh
 
 Se importa:
 import { useState } from "react";
@@ -19,7 +14,6 @@ const [variable, setVariable] = useState('Hola mundo');      // Se puede inicial
 
 
 
- 
 // Igual 
 const { variable, otraVariable } = props;  -> props.variable; 
 variable 
@@ -30,11 +24,19 @@ props.variable
 props.otraVariable
 
 
------------------------------------------------------
---------   --------
------------------------------------------------------
+```
 
-- Estructura de un JSX:
+
+ 
+
+
+
+
+
+
+## Estructura de un JSX:
+
+```sh 
 
 import React from 'react'                   //<----- Aqui van los import 
 
@@ -60,18 +62,4 @@ export const reference-guide = () => {
     )
 }
 
-
-
-
-
-*/
-
-
-
-
-
-
-
-
-
-
+```
