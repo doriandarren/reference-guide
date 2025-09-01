@@ -8,6 +8,8 @@
 
 t: toolbar
 n: sidebar
+x: borrar objeto
+f9: menu editar
 
 shift + a: añadir
 
@@ -26,6 +28,7 @@ ctrl + alt + q
 
 ## Centrar la pantalla el objeto:
 "." (en el numpad)
+
 
 
 ```
