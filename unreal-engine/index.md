@@ -126,14 +126,41 @@ public:
 Constructor o en el BeginPlay... (Lo hicimos en el constructor)
 
 CoinMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Coin Mesh Component"));
+CoinMesh->SetupAttachment(GetRootComponent());
+CoinMesh->SetWorldScale3D(FVector(0.6f, 0.6f, 0.1f));
+CoinMesh->AddWorldRotation(MeshRotator);
 
 
 
 ```
 
 
+## OverLap:
 
 
+```sh
+UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult
+
+Definimmos:
+# .h
+
+UFUNCTION()
+void CoinMeshBeginOverlap(
+	UPrimitiveComponent* OverlappedComponent, 
+	AActor* OtherActor, 
+	UPrimitiveComponent* OtherComp, 
+	int32 OtherBodyIndex, 
+	bool bFromSweep, 
+	const FHitResult& SweepResult
+);
+
+
+# .cpp
+
+
+
+
+```
 
 
 
