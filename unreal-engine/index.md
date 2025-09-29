@@ -64,8 +64,8 @@ GetWorldTimerManager().ClearTimer(CountdownTimerHandler);
 
 
 
-## Obtener GameMode y acceder  a funcion BP:
-Sirve para obtener funciones BluePrint hechas en UE5 editor. Ejemplo una funcion llmada: TimerUpdate
+## GameMode:
+Obtener GameMode y acceder  a funcion BP. Sirve para obtener funciones BluePrint hechas en UE5 editor. Ejemplo una funcion llmada: TimerUpdate
 UGameplayStatics es una clase qeu proporciona funciones utiles. Una de ellas es GetGameMode al que le pasamos como argumento el mundo.
 
 ```sh
@@ -104,6 +104,36 @@ if (World != nullptr)
 
 
 ```
+
+
+
+
+## UStaticMesh:
+
+
+```sh
+
+# .h
+
+public:
+...
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMeshComponent* CoinMesh;
+...
+
+# .cpp
+
+Constructor o en el BeginPlay... (Lo hicimos en el constructor)
+
+CoinMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Coin Mesh Component"));
+
+
+
+```
+
+
+
+
 
 
 
