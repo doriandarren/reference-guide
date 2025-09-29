@@ -66,13 +66,16 @@ GetWorldTimerManager().ClearTimer(CountdownTimerHandler);
 
 ## Obtener GameMode:
 
+UGameplayStatics es una clase qeu proporciona funciones utiles. Una de ellas es GetGameMode al que le pasamos como argumento el mundo.
+
 ```sh
 
 # .h
 #include "Kismet/GameplayStatics.h"
-.
-.
-.
+...
+UWorld* World = GetWorld();
+
+
 
 
 # .cpp
