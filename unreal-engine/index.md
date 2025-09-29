@@ -64,6 +64,22 @@ GetWorldTimerManager().ClearTimer(CountdownTimerHandler);
 
 
 
+## Obtener GameMode:
+
+```sh
+
+# .h
+#include "Kismet/GameplayStatics.h"
+.
+.
+.
+
+
+# .cpp
+AGameModeBase* GameMode = UGameplayStatics::GetGameMode(World);
+
+```
+
 
 
 
