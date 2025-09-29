@@ -64,8 +64,8 @@ GetWorldTimerManager().ClearTimer(CountdownTimerHandler);
 
 
 
-## Obtener GameMode:
-
+## Obtener GameMode y acceder  a funcion BP:
+Sirve para obtener funciones BluePrint hechas en UE5 editor. Ejemplo una funcion llmada: TimerUpdate
 UGameplayStatics es una clase qeu proporciona funciones utiles. Una de ellas es GetGameMode al que le pasamos como argumento el mundo.
 
 ```sh
@@ -79,7 +79,29 @@ UWorld* World = GetWorld();
 
 
 # .cpp
-AGameModeBase* GameMode = UGameplayStatics::GetGameMode(World);
+
+if (World != nullptr) 
+{
+
+	// Obtenemos el modo de juego actual
+	AGameModeBase* GameMode = UGameplayStatics::GetGameMode(World);
+
+	if (GameMode != nullptr) {
+
+		// Encontramos el nombre de la funición a la que queremos llamar y la guardamos en la variable BPFunctionName
+		UFunction* BPFunctionName = GameMode->FindFunction(FName("TimerUpdate"));
+
+		if (BPFunctionName) {
+
+			// Procesamos el evento BPFunctionName, es decir, Process Event activa o ejecuta esta función
+			GameMode->ProcessEvent(BPFunctionName, nullptr);
+
+		}
+
+	}
+
+}
+
 
 ```
 
