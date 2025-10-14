@@ -1,5 +1,83 @@
 # Unreal Engine 5
 
+/*************************************
+
+	NOTAS UNREAL UnrealEngine
+
+**************************************/
+
+Jugador desde el punto: 3 puntos en la pantalla -> "current camara location"
+
+f11= pantalla completa
+mover boton derecho del raton
+g = a que aparezcan o desaparezcan los objetos para editar
+
+alt + la flechas de colores = se duplica
+alt + click rueda raton = se selecciona el una esquina del objeto
+
+crtl + g  = un gruo con los obejtos seleccionados
+shift + g = desagrupar objetos
+
+busqueda de objetos concreto: (content -> megascans -> 3d assets
+Type=StaticMesh
+
+busqueda de objetos concreto: (content -> megascans -> surfaces
+Type=Material
+
+Para arreglar las sonbras de un objeto
+
+Selecciona el objeto Details y en el Buscador "Two" y se selecciona Shasow Two Slided
+
+comandos cmd:
+stat fps
+stat unit
+show collision // muestra las colision asi esten ocultas
+
+
+
+
+// Event Graph (Diagramas)
+alt + click = remover la relación en "Event Graph"
+
+
+
+
+** Crear los trigger
+
+open blueprint -> "event begin overlap"
+
+
+
+** Material 
+- Imagen rombo:
+sA_PickupSet_1 -> Fx -> NiagaraSystem
+
+- Sonido:
+interface_and_Item_Sound
+
+
+
+
+/*************************************
+
+	NOTAS UNREAL CODE
+
+**************************************/
+
+Para compilar salir de los programas: vs y de Unreal. Luego se ubica el proyecto en la explorador y se elimina las carpetas siguientes:
+
+- Binaries
+- Intermediate
+- Saved
+
+Luego botón derecho encima de "NombreProyecto.uproject" -> "Generate Vusial Studio Project files". Luego doble click en "NombreProyecto.sln" y este compila con problemas (ignorar esto) y luego en el menú: compilar -> "recompilar solución" o "compilar solución"
+
+
+
+
+
+
+
 Rferencia: https://dev.epicgames.com/documentation/en-us/unreal-engine/API
 
 ## GEngine:
