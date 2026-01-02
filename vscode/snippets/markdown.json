@@ -1,0 +1,74 @@
+{
+	// Place your snippets for markdown here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Project Basic": {
+		"prefix": "md-project",
+		"body": [
+			"# Project",
+			"",
+			"```sh",
+			"",
+			"```"
+		],
+		"description": "Template sh"
+	},
+	"Python README": {
+		"prefix": "py-readme",
+		"body": [
+			"## Project",
+			"",
+			"## Crear entorno virtual",
+			"",
+			"```sh",
+			"## Entorno virtual MacOs",
+			"- python3 -m venv .venv",
+			"- source .venv/bin/activate                     # Activar entorno",
+			"- deactive                                      # Desactivar entorno",
+			"",
+			"## Entorno virtual Windows",
+			"- py -m venv .venv                      # Windows",
+			"- .\\\\.venv\\\\Scripts\\\\activate                           # Windows",
+			"- py -m pip install --upgrade pip      # Windows",
+			"- deactivate                                    # Desactivar",
+			"- py -m pip xxx                                 # Usar este comando para intrucciones",
+			"",
+			"## Actualizar",
+			"pip3 install --upgrade pip",
+			"",
+			"",
+			"## Instala los requerimientos:",
+			"pip3 freeze > requirements.txt                  # Crear archivo requerimientos -> Respaldo / Export",
+			"pip3 install -r requirements.txt                # Instalar requerimientos Restore / Import",
+			"",
+			"# Si No se tiene el archivo: requirements.txt",
+			"pip install pipreqs                             # Install",
+			"pipreqs . --force                               # Ejecutar",
+			"",
+			"",
+			"## Instalar paquetes",
+			"pip3 freeze                                     # Ver Paquetes instalados",
+			"py -m pip freeze                                # Para Windows",
+			"pip3 install requests                           # Conexion API",
+			"pip3 install schedule                           # CronJobs",
+			"",
+			"",
+			"## Si no funciona VSCode:",
+			"( Cmd + Shift + P ) -> luego \"Python: Select Interpreter\" elegir \".venv/bin/python\"",
+			"```",
+			"",
+			"$0"
+		],
+		"description": "README by Python"
+	},
+}
