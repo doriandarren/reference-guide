@@ -104,6 +104,14 @@ print(usernames)
 
 ```sh
 
+for(int i=0; i<10;i++) es igual ---> for i in range(10):
+
+
+for a in (5, 7, 11, 13):
+    pass
+
+
+
 for index, n in enumerate(list(range(70, 80))):
     print(index, n)
 
@@ -113,12 +121,15 @@ for index, n in enumerate(list(range(70, 80))):
 
 ```sh
 counter = 1
-
 while counter <= 5:
     print(f"Number: {counter}")
     counter += 1
 else:
     print("Terminamos")
+
+
+
+
 ```
 
 ## Clase - Objeto
