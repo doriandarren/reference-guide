@@ -148,3 +148,39 @@ class Person:
 person1 = Persona("Pepe", 29) ## Instanciando una clase
 
 ```
+
+## Parametros extensibles:
+
+
+```sh
+
+## No nombrados: *args
+
+def f(*args):
+return locals()
+
+f(1,2,3,4,5)
+
+## Nombrados: **kwargs
+
+def f(**kwargs):
+return locals()
+
+f(a=1,b=2,c=3)
+
+```
+
+
+
+# Project
+
+```sh
+
+from typing import Self
+
+class A():
+    def method(self: Self) -> Self:
+        return self
+
+
+```
