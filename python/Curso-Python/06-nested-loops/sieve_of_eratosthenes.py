@@ -1,60 +1,17 @@
+n = 100
+
+numbers = list(range(2, n + 1))
+
+new_numbers = []
 
 
-# number_list = [i for i in range(2, 101)]
+for i in numbers:
 
-# #print(number_list)
+    prime = i
 
-# for i in range(2, len(number_list)):
-
-#     if i in number_list:
-#         for j in number_list:
-#             if i % j == 0:
-#                 number_list.remove(i)
-    
-
-# print(number_list)
+    for number in numbers:
+        if number == prime or number % prime != 0:
+            new_numbers.append(number)
 
 
-
-a = {1, 2, 3}
-a.add(3)
-a.remove(3)
-a.add(4)
-print(a)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# if n > 2:
-#     prime_list.append(2)
-    
-
-# for i in range(3, n, 2):
-    
-#     is_prime = True
-    
-#     for j in range(3, int(i ** 0.5) + 1, 2):
-#         if i % j == 0:
-#             is_prime = False
-#             break
-            
-#     if is_prime:
-#         prime_list.append(i)
-#         number_list.remove(i)
-
-
+print(new_numbers)
