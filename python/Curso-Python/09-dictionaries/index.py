@@ -19,6 +19,7 @@ for k, v in my_dict.items():
 
 
 
+
 # Crear una copia
 second_dict = my_dict.copy()
 
