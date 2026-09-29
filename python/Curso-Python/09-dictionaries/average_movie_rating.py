@@ -14,16 +14,21 @@ ratings = [
 dic = {}
 ordered = {}
 
-# Busco 
+
+# for name, value in ratings:
+#     if name not in dic:
+#         dic[name] = []
+#     dic[name].append(value)
+
+
 for name, value in ratings:
-    if name not in dic:
-        dic[name] = []
-    dic[name].append(value)
+    dic[name] = dic.get(name, []) + [value]
+
 
 
 for movie in dic:
     average = round(sum(dic[movie]) / len(dic[movie]), 2)
-    print(average)
+    #print(average)
     dic[movie] = average
 
 
