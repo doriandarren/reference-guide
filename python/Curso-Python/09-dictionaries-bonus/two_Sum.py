@@ -1,19 +1,31 @@
 
-lst = [1, 2, 3, 4, 5]
-target = 6
+# lst = [1, 2, 3, 4, 5]
+# target = 6
 
-st = {}
+# st = {}
 
-for i in range(len(lst)):
+# for i in range(len(lst)):
 
-    current_num = lst[i]
+#     current_num = lst[i]
 
-    for j in range(len(lst)):
+#     for j in range(len(lst)):
 
-        if (current_num + lst[j]) + current_num == current_num:
-            pair = (current_num, lst[j])
+#         if (current_num + lst[j]) + current_num == current_num:
+#             pair = (current_num, lst[j])
 
-            st.add(pair)
+#             st.add(pair)
 
 
-print(st)
+# print(st)
+
+
+import math 
+
+math.pi
+
+
+def f(x):
+    return x + 1
+
+g = f
+print(g(2))
