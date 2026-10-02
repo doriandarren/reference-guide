@@ -21,20 +21,20 @@ def print_sudoku(sudoku):
     numbers = set(range(1, 10))
     
     # validar Filas
-    # for row in sudoku:
-    #     if set(row) != numbers:
-    #         return False
+    for row in sudoku:
+        if set(row) != numbers:
+            return False
     
     
     # Validar column
-    # for col in range(9):
-    #     column = []
+    for col in range(9):
+        column = []
         
-    #     for row in range(9):
-    #         column.append(sudoku[row][col])
+        for row in range(9):
+            column.append(sudoku[row][col])
             
-    #     if set(column) != numbers:
-    #         return False
+        if set(column) != numbers:
+            return False
     
     
     
@@ -42,10 +42,10 @@ def print_sudoku(sudoku):
     # Validar 3x3
     for start_row in range(0, 9, 3):
         
-        print("R: ", start_row)
+        print(start_row)
         
         for start_col in range(0, 9, 3):
-            print("C:", start_col)
+            print(start_col)
             
             square = []
             
@@ -61,7 +61,5 @@ def print_sudoku(sudoku):
     return True
         
 
-            
-            
 
-print_sudoku(sudoku)
+print(print_sudoku(sudoku))
