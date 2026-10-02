@@ -1,33 +1,25 @@
-
 def is_prime(n):
+
+    if n < 2:
+        return False
     
-    primes = []
-
-    limit = n
-
-    if n > 2:
-        primes.append(2)
-
-    for i in range(3, limit, 2):
-        is_prime = True
-
-        for j in range(3, i, 2):
-            if i % j == 0:
-                is_prime = False
-                break
-
-        if is_prime:
-            primes.append(i)
-        
-    print(primes)
-    
-    if n in primes:
+    if n == 2:
         return True
-    else:
+    
+    if n % 2 == 0:
         return False
 
+    limit = int(n **0.5) + 1
+
+    
+    for i in range(3, limit, 2):
+        if n % i == 0:
+            return False
+        
+    return True
 
 
+n = int(input("Enter a number: "))
 n = 10
 
 result = "is" if is_prime(n) else "is not"  
