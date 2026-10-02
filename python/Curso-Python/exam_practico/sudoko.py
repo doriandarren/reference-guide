@@ -49,10 +49,9 @@ def print_sudoku(sudoku):
             
             square = []
             
-            for row in range(start_row, start_row + 3):
-                for col in range(start_col, start_col + 3):
-                    
-                    square.append(sudoku[row][col])
+            for i in range(start_row, start_row + 3):
+                for j in range(start_col, start_col + 3):
+                    square.append(sudoku[i][j])
             
             if set(square) != numbers:
                 return False
