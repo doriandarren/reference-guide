@@ -21,9 +21,9 @@ def fibonacci(n):
     fibonacci_lst = []
 
     if n == 1:
-        fibonacci_lst[0]
+        fibonacci_lst = [0]
     elif n >= 2:
-        fibonacci_lst[0, 1]
+        fibonacci_lst = [0, 1]
 
         for i in range(2, n):
             fibonacci_lst.append(fibonacci_lst[-1] + fibonacci_lst[-2])
