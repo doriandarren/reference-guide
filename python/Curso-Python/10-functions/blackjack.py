@@ -16,11 +16,11 @@ player_hand = []
 dealer_hand = []
 
 
-def barajar():
+def shuflle_deck():
     random.shuffle(deck)
 
 
-def repartir_inicial():
+def initial_distribute():
     for i in range(2):
         player_hand.append(deck.pop())
         dealer_hand.append(deck.pop())
@@ -61,8 +61,8 @@ def show_hand(hand):
 
 def play():
 
-    barajar()
-    repartir_inicial()
+    shuflle_deck()
+    initial_distribute()
 
     print(f"Dealer's displayed card is {dealer_hand[-1]}.")
     print(
@@ -108,9 +108,8 @@ def play():
         else:
             print("Invalid option. Enter 'h' or 's'.")
 
-    # -------------------
+
     # TURNO DEL DEALER
-    # -------------------
 
     dealer_total = calculate_hand(dealer_hand)
 
@@ -134,9 +133,9 @@ def play():
             f"(Total: {dealer_total})."
         )
 
-    # -------------------
+
+
     # RESULTADO
-    # -------------------
 
     player_total = calculate_hand(player_hand)
 
