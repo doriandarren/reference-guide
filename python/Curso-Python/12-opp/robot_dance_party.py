@@ -25,8 +25,6 @@ Check the example code to see how to implement and use the classes correctly.
 
 
 class RobotDancer:
-
-
     def __init__(self, robot_id, name, dance_move):
         self.robot_id = robot_id
         self.name = name
@@ -44,7 +42,6 @@ class RobotDancer:
 
 
 class DanceFloor:
-
     def __init__(self):
         self.robot_dance = []
 
@@ -54,11 +51,17 @@ class DanceFloor:
     
 
     def display_robots(self):
-        pass
+        if len(self.robot_dance) > 0:
+            for r in self.robot_dance:
+                print(f"{r.name}")
+        else:
+            print("No robots on the dance floor.")
 
     
     def start_dancing(self):
-        pass
+        
+        for r in self.robot_dance:
+            r.dance()
 
 
     def __str__(self):
@@ -80,10 +83,10 @@ wall_e = RobotDancer(2, "Wall-E", "Robot Wave")
 bender = RobotDancer(3, "Bender", "Circuit Salsa")
 
 # Dance Floor Setup
-# dance_floor.add_robot(r2d2)
-# dance_floor.add_robot(wall_e)
-# dance_floor.add_robot(bender)
+dance_floor.add_robot(r2d2)
+dance_floor.add_robot(wall_e)
+dance_floor.add_robot(bender)
 
 # Party Time!
-# dance_floor.display_robots()
-# dance_floor.start_dancing()
+dance_floor.display_robots()
+dance_floor.start_dancing()
