@@ -46,23 +46,23 @@ class RobotDancer:
 class DanceFloor:
 
     def __init__(self):
+        self.robot_dance = []
+
+    
+    def add_robot(self, robot):
+        self.robot_dance.append(robot)
+    
+
+    def display_robots(self):
         pass
 
     
-    def add_robot(robot):
-        pass
-    
-
-    def display_robots():
-        pass
-
-    
-    def start_dancing():
+    def start_dancing(self):
         pass
 
 
     def __str__(self):
-        pass
+        return f"{self.robot_dance}"
 
 
 
