@@ -106,14 +106,13 @@ class AlienSpecies:
 
 
     def breed(self):
-        
-        ma, mi = self.offspring_range
-
-        print(ma, mi)
+        minimun, maxmimun = self.offspring_range
+        rnd = random.randint(minimun, maxmimun)
+        self.population += rnd
+        print(f"Population {self.name}: {rnd} - Total: {self.population}")
 
 
     
-
     def __str__(self):
         return f"{self.species_id} {self.name} {self.diet} {self.population} {self.min_population_to_breed} {self.offspring_range}"
     
@@ -147,8 +146,10 @@ nebun = AlienSpecies(2, "Nebulon", "Cosmic Dust", population=3,
                      min_population_to_breed=4, offspring_range=(1, 3))
 
 
-
+print(zorgon)
 zorgon.feed()
+zorgon.breed()
+print(zorgon)
 #print(zorgon)
 #print(nebun)
 
