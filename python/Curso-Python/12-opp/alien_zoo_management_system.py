@@ -123,15 +123,76 @@ class AlienSpecies:
 
 
 #------------------------
-# 
+#  Habitat
 #------------------------
 
+class Habitat:
+    
+    def __init__(self, name, capacity):
+        self.name = name
+        self.capacity = capacity
+        self.alien_species = []
+        
+    
+    def add_species(self, species):
+        self.alien_species.append(species)
+    
+    
+    def breed(self):
+        for ele in self.alien_species:
+            if (ele.population + ele.offspring_range[1]) < self.capacity:
+                ele.breed()
+                print(f"Reproducción especie: {ele.name} completada!")
+            else:
+                print(f"No se puede llevar a cabo la reproducción de la especie: {ele.name}")
+              
+    def report(self):
+        for ele in self.alien_species:
+            print("")
+            print("Alien species:")
+            print(f"ID: {ele.species_id}")
+            print(f"Name: {ele.name}")
+            print(f"Diet: {ele.diet}")
+            print(f"Population: {ele.population}")
+            print(f"Minimal population to breed: {ele.min_population_to_breed}")
+            print(f"Offspring range: {ele.offspring_range}")          
+            
+    
+    def __str__(self):
+        return f"{self.name} {self.capacity} {self.alien_species}"
+    
 
 
 
 
+class Zoo:
+    
+    def __init__(self):
+        self.habitats = []
+    
+    
+    def add_habitat(self, habitat):
+        self.habitats.append(habitat)
+    
+    
+    def report(self):
+        print("\n################################")
+        print("#########  Alien Zoo ###########")
+        print("################################\n")
+        
+        for ele in self.habitats:
+            print("#", "-" * 10)
+            print("Habitat Report")
+            print("#", "-" * 10)
+            ele.report()
 
 
+    def __str__(self):
+        return f"{self.habitats}"
+        
+    def __repr__(self):
+        return f"{self.habitats}"
+    
 
 
 
@@ -146,38 +207,37 @@ nebun = AlienSpecies(2, "Nebulon", "Cosmic Dust", population=3,
                      min_population_to_breed=4, offspring_range=(1, 3))
 
 
-print(zorgon)
-zorgon.feed()
-zorgon.breed()
-print(zorgon)
+# print(zorgon)
+# zorgon.feed()
+# zorgon.breed()
+# print(zorgon)
 #print(zorgon)
 #print(nebun)
 
 
-
-
-
 # Create habitats
-# cryo_dome = Habitat("CryoDome", capacity=20)
-# lava_swamp = Habitat("Lava Swamp", capacity=15)
+cryo_dome = Habitat("CryoDome", capacity=20)
+lava_swamp = Habitat("Lava Swamp", capacity=15)
 
 # Add species to habitats
-# cryo_dome.add_species(zorgon)
-# lava_swamp.add_species(nebun)
+cryo_dome.add_species(zorgon)
+lava_swamp.add_species(nebun)
+
 
 # Create zoo
-# zoo = Zoo()
-# zoo.add_habitat(cryo_dome)
-# zoo.add_habitat(lava_swamp)
+zoo = Zoo()
+zoo.add_habitat(cryo_dome)
+zoo.add_habitat(lava_swamp)
 
 # Simulate actions
-# zorgon.feed()
+zorgon.feed()
 
-# cryo_dome.breed()
-# cryo_dome.breed()
-# cryo_dome.breed()
+cryo_dome.breed()
+cryo_dome.breed()
+cryo_dome.breed()
 
 # Should not be able to breed because of min_population_to_breed
-# lava_swamp.breed()
+lava_swamp.breed()
 
-# zoo.report()
+
+zoo.report()

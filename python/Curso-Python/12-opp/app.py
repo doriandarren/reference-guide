@@ -23,9 +23,15 @@
 
 
 
-class A:
-    def __init__(self, x=5):
-        self.x = x
+# class A:
+#     def __init__(self, x=5):
+#         self.x = x
 
-a = A(10)
-print(a.x)
+# a = A(10)
+# print(a.x)
+
+
+values = [1, 2, 2, 3, 4]
+
+result = {x % 3 for x in values}
+print(result)
