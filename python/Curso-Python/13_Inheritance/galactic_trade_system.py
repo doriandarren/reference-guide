@@ -11,6 +11,8 @@ Métodos:
 add_resource(resource: Resource, price: int): Agrega un recurso al mercado del planeta con un precio específico por unidad.
 
 
+
+
 Clase:Spaceship
 Representa una nave espacial comercial capaz de visitar planetas, comprar y vender recursos, y gestionar la carga y las finanzas.
 
@@ -23,9 +25,12 @@ inventory(dict[str, int]): Asignación de nombres de recursos a la cantidad alma
 current_planet(Planeta | Ninguno): El planeta en el que se encuentra actualmente atracada la nave espacial.
 Métodos:
 visit_planet(planet: Planet)Actualiza la ubicación de la nave espacial.
-buy_resource(resource: Resource, amount: int): Intenta comprar una cantidad específica de un recurso del planeta actual (dada por el método ejecutado previamente) visit_planet, imponiendo restricciones de capacidad y dinero.
+buy_resource(resource: Resource, amount: int): Intenta comprar una cantidad específica de un recurso del planeta actual (dada por el método ejecutado previamente) 
+visit_planet, imponiendo restricciones de capacidad y dinero.
 sell_resource(resource: Resource, amount: int = 1): Vende una cantidad específica de un recurso al planeta actual, lo que obliga a realizar comprobaciones de inventario.
 inventory_value() → intCalcula el valor total del inventario basándose en los precios actuales del planeta.
+
+
 
 
 Clase:Resource
@@ -57,7 +62,7 @@ class Resource:
     """Representa un tipo de recurso comercializable."""
     
     def __init__(self, name: str, weight: int):
-        self.name = name
+        self.name = name.strip()
         self.weight = weight
     
     
@@ -110,21 +115,129 @@ class Spaceship:
         name: str,
         captain: str,
         capacity: int,
-        money: int
+        initial_money: int
     ):
-        
-        
+        self.name = name
+        self.captain = captain
+        self.capacity = capacity
+        self.money = initial_money
         self.inventory: dict[str, int] = {}
         self.current_planet: (Planet | None) = None
     
     
+    def helper_format_str(self, string):
+        first = string[0].strip().upper()
+        return first + string[1:].lower()
+
+
+    def visit_planet(self, planet: Planet):
+        """Actualiza la ubicación de la nave espacial."""
+        self.current_planet = planet
+    
+
+    
+
+
+
+    def buy_resource(self, resource: Resource, amount: int): 
+        """Intenta comprar una cantidad específica de un recurso del planeta actual (dada por el método ejecutado previamente) 
+        visit_planet, imponiendo restricciones de capacidad y dinero."""
+
+        planet_resources = self.current_planet.resources
+        planet_name = self.current_planet.name
+
+        
+        resource_name_find =  self.helper_format_str(resource.name)
+
+        if resource_name_find not in planet_resources: 
+            print(f"Recurso: {resource_name_find} no se encuentra en el planeta: {planet_name}")
+            return
+
+        price_buy = planet_resources[resource_name_find] * amount
+
+        if self.money <= 0 or price_buy > self.money:
+            print("Insuficiente dinero para comprar")
+            return
+
+
+        ## Capacidad de la nave:
+        total_weight = resource.weight * amount
+        if self.capacity < total_weight:
+            print("Error en la capacidad de carga")
+            return
+        
+
+        ## hacer los descuentos
+        self.capacity -= total_weight
+        self.money -= price_buy
+
+
+        ## Agrego al inventario
+        if resource_name_find not in self.inventory:
+            self.inventory[resource_name_find] = amount
+        else:
+            self.inventory[resource_name_find] += amount
+        
+        
+
+
+
+
+    def sell_resource(self, resource: Resource, amount: int = 1):
+        """Vende una cantidad específica de un recurso al planeta actual, lo que obliga a realizar comprobaciones de inventario."""
+
+
+        resource_name_find = self.helper_format_str(resource.name)
+
+
+        if resource_name_find not in self.inventory:
+            print(f"Recurso {resource_name_find} no esta en tu inventario.")
+            return
+
+        quantity = self.inventory[resource_name_find] 
+
+        if amount > quantity:
+            print(f"No tienes suficiente recurso.")
+            return
+
+
+        ## descontar la carga
+        total_weight = resource.weight * amount
+        self.capacity += total_weight
+
+
+        ## Sumar el money
+        resources_planet = self.current_planet.resources
+        self.money += resources_planet[resource_name_find] * amount
+
+        ## Inventario
+        self.inventory[resource_name_find] -= amount
+
+
+
+        
+
+
+
+    def inventory_value(self):
+        """intCalcula el valor total del inventario basándose en los precios actuales del planeta."""
+        total = 0
+
+        for key, value in self.inventory.items():
+
+            total += self.current_planet.resources[key] * value
+
+            print(key, value, self.current_planet.resources[key], "Total:", total)
+        
+        return total
+
     
     
     def __str__(self):
-        return f""
+        return f"{self.name} {self.captain} {self.capacity} {self.money} | {self.inventory} {self.current_planet}"
     
     def __repr__(self):
-        return f""
+        return f"{self.name} {self.captain} {self.capacity} {self.money} | {self.inventory} {self.current_planet}"
     
 
 
@@ -155,9 +268,9 @@ venus.add_resource(gold, 1200)
 venus.add_resource(silver, 480)
 venus.add_resource(water, 100)
 
-print(earth)
-print(mars)
-print(venus)
+# print(earth)
+# print(mars)
+# print(venus)
 
 
 # Spaceships
@@ -165,64 +278,70 @@ falcon = Spaceship("Falcon", "Han Solo", capacity=1000, initial_money=5000)
 enterprise = Spaceship("Enterprise", "Picard", capacity=3000, initial_money=10000)
 
 # === Falcon trades on Earth ===
-# falcon.visit_planet(earth)
+falcon.visit_planet(earth)
 
 # Try to buy 10 gold → too expensive
-# falcon.buy_resource(gold, 10)  # 10000 > 5000, should fail
-# assert "Gold" not in falcon.inventory
+falcon.buy_resource(gold, 10)  # 10 10000 > 5000, should fail
+assert "Gold" not in falcon.inventory
+
 
 # Buy 2 gold (2000) → should work
-# falcon.buy_resource(gold, 2)
-# assert falcon.inventory["Gold"] == 2
-# assert falcon.money == 5000 - 2 * 1000
-# assert falcon.capacity == 1000 - 2 * 10
+falcon.buy_resource(gold, 2)
+assert falcon.inventory["Gold"] == 2
+assert falcon.money == 5000 - 2 * 1000
+assert falcon.capacity == 1000 - 2 * 10
+
 
 # Buy 10 water (500) → should fail (500 > 3000 left)
-# falcon.buy_resource(water, 10)  # 500 > 3000 left, money is only 3000, so OK
-# assert falcon.inventory["Water"] == 10
-# assert falcon.money == 3000 - 10 * 50
-# assert falcon.capacity == 1000 - (2 * 10 + 10 * 1)
+falcon.buy_resource(water, 10)  # 500 > 3000 left, money is only 3000, so OK
+assert falcon.inventory["Water"] == 10
+assert falcon.money == 3000 - 10 * 50
+assert falcon.capacity == 1000 - (2 * 10 + 10 * 1)
+
+
 
 # === Falcon sells on Mars ===
-# falcon.visit_planet(mars)
+falcon.visit_planet(mars)
 
 # Sell 1 gold (800 income)
-# falcon.sell_resource(gold, 1)
-# assert falcon.inventory["Gold"] == 1
-# assert falcon.money == 3000 - 500 + 800
-# assert falcon.capacity == 1000 - (1 * 10 + 10 * 1)
+falcon.sell_resource(gold, 1)
+
+
+assert falcon.inventory["Gold"] == 1
+assert falcon.money == 3000 - 500 + 800
+assert falcon.capacity == 1000 - (1 * 10 + 10 * 1)
 
 # Try to sell more silver than you own
-# falcon.sell_resource(silver, 1)  # should print warning
+falcon.sell_resource(silver, 1)  # should print warning
 
 # === Enterprise trades on Mars ===
-# enterprise.visit_planet(mars)
+enterprise.visit_planet(mars)
 
 # Buy 5 gold (4000) → should work
-# enterprise.buy_resource(gold, 5)
-# assert enterprise.inventory["Gold"] == 5
-# assert enterprise.money == 10000 - 5 * 800
-# assert enterprise.capacity == 3000 - 5 * 10
+enterprise.buy_resource(gold, 5)
+assert enterprise.inventory["Gold"] == 5
+assert enterprise.money == 10000 - 5 * 800
+assert enterprise.capacity == 3000 - 5 * 10
 
 # Buy 200 water (4000) → should work
-# enterprise.buy_resource(water, 200)
-# assert enterprise.inventory["Water"] == 200
-# assert enterprise.capacity == 3000 - (5 * 10 + 200 * 1)
-# assert enterprise.money == 10000 - 5 * 800 - 200 * 20
+enterprise.buy_resource(water, 200)
+assert enterprise.inventory["Water"] == 200
+assert enterprise.capacity == 3000 - (5 * 10 + 200 * 1)
+assert enterprise.money == 10000 - 5 * 800 - 200 * 20
 
 # === Inventory value checks ===
-# enterprise.visit_planet(venus)
+enterprise.visit_planet(venus)
 # Gold: 1200 * 5, Water: 100 * 200
-# assert enterprise.inventory_value() == 5 * 1200 + 200 * 100
+assert enterprise.inventory_value() == 5 * 1200 + 200 * 100
 
 
 
 # === Selling water ===
-# enterprise.sell_resource(water, 50)
-# assert enterprise.inventory["Water"] == 150
-# assert enterprise.money == (
-#     10000 - 5 * 800 - 200 * 20 + 50 * 100
-# )
-# assert enterprise.capacity == 3000 - (5 * 10 + 150 * 1)
+enterprise.sell_resource(water, 50)
+assert enterprise.inventory["Water"] == 150
+assert enterprise.money == (
+    10000 - 5 * 800 - 200 * 20 + 50 * 100
+)
+assert enterprise.capacity == 3000 - (5 * 10 + 150 * 1)
 
-# print("✅ All tests passed.")
+print("✅ All tests passed.")
