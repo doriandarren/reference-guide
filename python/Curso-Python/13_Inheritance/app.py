@@ -18,12 +18,8 @@
 
 
 
-class AError(Exception): pass
-class BError(AError): pass
 
-try:
-    raise BError("problem")
-except AError:
-    print("Caught A Error")
-except BError:
-    print("Caught B Error")
+### Listas:
+    
+
+    
